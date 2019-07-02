@@ -37,8 +37,10 @@ const int INF=0x3f3f3f3f;
 #endif
 const double eps=1e-9;
 
+#ifdef USE_IOSTREAM
+template<typename T>void read(T&x){cin>>x;}
+#else 
 template<typename T>typename enable_if<!is_integral<T>::value,void>::type read(T&x){cin>>x;}
-#ifndef USE_IOSTREAM
 long long read()
 {
     char c;long long out=0,f=1;
@@ -57,8 +59,10 @@ void read(char*x){scanf("%s",x);}
 #endif
 template<typename T,typename...Args>void read(T&x,Args&...args){read(x);read(args...);}
 template<typename...Args>void read(char*x,Args&...args){read(x);read(args...);}
+#ifdef USE_IOSTREAM
+template<typename T>void write(const T&x){cout<<x;}
+#else
 template<typename T>typename enable_if<!is_integral<T>::value,void>::type write(const T&x){cout<<x;}
-#ifndef USE_IOSTREAM
 template<typename T>typename enable_if<is_integral<T>::value,void>::type write(const T&x)
 {
     if (x<0){putchar('-');write(-x);return;}
@@ -91,8 +95,8 @@ signed main()
     cin.sync_with_stdio(false);
     cin.tie(0);
 #endif
-
-
-
+	
+	
+	
     return 0;
 }
