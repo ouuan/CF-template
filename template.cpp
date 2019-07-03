@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 
 #define int LoveLive
-//#define USE_IOSTREAM 1
+//#define FAST_IOSTREAM 1
 
 #define For(i, l, r) for (i = l; i <= r; ++i)
 #define FOR(i, r, l) for (i = r; i >= l; --i)
@@ -13,13 +13,6 @@
 #define fi first
 #define se second
 #define pq priority_queue
-#ifdef USE_IOSTREAM
-#define br cout << '\n'
-#define sp cout << ' '
-#else
-#define br putchar('\n')
-#define sp putchar(' ')
-#endif
 #define pb emplace_back
 #define isinf(x) (x >= INF ? -1 : x)
 #define DEBUG(x) cerr << (#x) << ": " << x << endl
@@ -37,10 +30,16 @@ const int INF = 0x3f3f3f3f;
 #endif
 const double eps = 1e-9;
 
-#ifdef USE_IOSTREAM
+#ifdef FAST_IOSTREAM
+#define br cout << '\n'
+#define sp cout << ' '
 template <typename T>
 void read(T& x) { cin >> x; }
+template <typename T>
+void write(const T& x) { cout << x; }
 #else
+#define br putchar('\n')
+#define sp putchar(' ')
 template <typename T>
 typename enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
 long long read()
@@ -82,6 +81,23 @@ double read(double& x)
 	return x;
 }
 void read(char* x) { scanf("%s", x); }
+template <typename T>
+typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
+template <typename T>
+typename enable_if<is_integral<T>::value, void>::type write(const T& x)
+{
+    if (x < 0)
+    {
+        putchar('-');
+        write(-x);
+        return;
+    }
+    if (x > 9) write(x / 10);
+    putchar(x % 10 + '0');
+}
+void write(const char& x) { putchar(x); }
+void write(const double& x) { printf("%.10lf", x); }
+void write(const char* x) { printf("%s", x); }
 #endif
 template <typename T, typename... Args>
 void read(T& x, Args&... args)
@@ -95,28 +111,26 @@ void read(char* x, Args&... args)
 	read(x);
 	read(args...);
 }
-#ifdef USE_IOSTREAM
-template <typename T>
-void write(const T& x) { cout << x; }
-#else
-template <typename T>
-typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
-template <typename T>
-typename enable_if<is_integral<T>::value, void>::type write(const T& x)
+template <typename _OutputIterator>
+void read(_OutputIterator __first, _OutputIterator __last) { for (; __first != __last; ++__first) read(*__first); }
+template <typename _InputIterator>
+void wts(_InputIterator __first, _InputIterator __last)
 {
-	if (x < 0)
+	for (; __first != __last; ++__first)
 	{
-		putchar('-');
-		write(-x);
-		return;
+		write(*__first);
+		sp;
 	}
-	if (x > 9) write(x / 10);
-	putchar(x % 10 + '0');
 }
-void write(const char& x) { putchar(x); }
-void write(const double& x) { printf("%.10lf", x); }
-void write(const char* x) { printf("%s", x); }
-#endif
+template <typename _InputIterator>
+void wtb(_InputIterator __first, _InputIterator __last)
+{
+	for (; __first != __last; ++__first)
+	{
+		write(*__first);
+		br;
+	}
+}
 void wts(const char* x)
 {
 	write(x);
@@ -172,9 +186,11 @@ inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 const int N = 100010;
 const int mod = 1000000007;
 
+
+
 signed main()
 {
-#ifdef USE_IOSTREAM
+#ifdef FAST_IOSTREAM
 	cin.sync_with_stdio(false);
 	cin.tie(0);
 #endif
