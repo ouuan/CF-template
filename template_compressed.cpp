@@ -32,14 +32,14 @@ template<typename T>void read(T&x){cin>>x;}template<typename T>void write(const 
 #define sp putchar(' ')
 template<typename T>typename enable_if<!is_integral<T>::value,void>::type read(T&x){cin>>x;}long long
 read(){char c;long long out=0,f=1;for(c=getchar();!isdigit(c)&&c!='-';c=getchar());if(c=='-'){f=-1;
-c=getchar();}for(;isdigit(c);c=getchar()){out=(out<<3)+(out<<1)+c-'0';}return out*f;}template<typename
+c=getchar();}for(;isdigit(c);c=getchar())out=(out<<3)+(out<<1)+c-'0';return out*f;}template<typename
 T>typename enable_if<is_integral<T>::value,T>::type read(T&x){char c;T f=1;x=0;for(c=getchar();!isdigit
-(c)&&c!='-';c=getchar());if(c=='-'){f=-1;c=getchar();}for(;isdigit(c);c=getchar()){x=(x<<3)+(x<<1)+c
--'0';}return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read(double
+(c)&&c!='-';c=getchar());if(c=='-'){f=-1;c=getchar();}for(;isdigit(c);c=getchar())x=(x<<3)+(x<<1)+c
+-'0';return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read(double
 &x){scanf("%lf",&x);return x;}void read(char*x){scanf("%s",x);}template<typename T>typename enable_if
 <!is_integral<T>::value,void>::type write(const T&x){cout<<x;}template<typename T>typename enable_if
-<is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9){write
-(x/10);}putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double&x){printf
+<is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9)write
+(x/10);putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double&x){printf
 ("%.10lf",x);}void write(const char*x){printf("%s",x);}
 #endif
 template<typename T,typename...Args>void read(T&x,Args&...args){read(x);read(args...);}template<typename
