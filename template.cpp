@@ -6,9 +6,9 @@
 #define int LoveLive
 //#define FAST_IOSTREAM 1
 
-#define For(i, l, r) for (i = l; i <= r; ++i)
-#define FOR(i, r, l) for (i = r; i >= l; --i)
-#define SON(i, u) for (i = head[u]; i; i = nxt[i])
+#define For(i, l, r) for (int i = l; i <= r; ++i)
+#define FOR(i, r, l) for (int i = r; i >= l; --i)
+#define SON(i, u) for (int i = head[u]; i; i = nxt[i])
 #define ms(a, x) memset(a, x, sizeof(a))
 #define fi first
 #define se second
