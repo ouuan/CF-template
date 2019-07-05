@@ -6,8 +6,8 @@
 #define int LoveLive
 //#define FAST_IOSTREAM 1
 
-#define For(i, l, r) for (int i = l; i <= r; ++i)
-#define FOR(i, r, l) for (int i = r; i >= l; --i)
+#define For(i, l, r) for (int i = (l), i##end = (r); i <= i##end; ++i)
+#define FOR(i, r, l) for (int i = (r), i##end = (l); i >= i##end; --i)
 #define SON(i, u) for (int i = head[u]; i; i = nxt[i])
 #define ms(a, x) memset(a, x, sizeof(a))
 #define fi first
@@ -33,15 +33,15 @@ const double eps = 1e-9;
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
 #define sp cout << ' '
-template <class T>
+template <typename T>
 void read(T& x) { cin >> x; }
-template <class T>
+template <typename T>
 void write(const T& x) { cout << x; }
 #else
 #define br putchar('\n')
 #define sp putchar(' ')
-template <class T>
-class enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
+template <typename T>
+typename enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
 long long read()
 {
 	char c;
@@ -55,8 +55,8 @@ long long read()
 	for (; isdigit(c); c = getchar()) out = (out << 3) + (out << 1) + c - '0';
 	return out * f;
 }
-template <class T>
-class enable_if<is_integral<T>::value, T>::type read(T& x)
+template <typename T>
+typename enable_if<is_integral<T>::value, T>::type read(T& x)
 {
 	char c;
 	T f = 1;
@@ -81,10 +81,10 @@ double read(double& x)
 	return x;
 }
 void read(char* x) { scanf("%s", x); }
-template <class T>
-class enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
-template <class T>
-class enable_if<is_integral<T>::value, void>::type write(const T& x)
+template <typename T>
+typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
+template <typename T>
+typename enable_if<is_integral<T>::value, void>::type write(const T& x)
 {
 	if (x < 0)
 	{
@@ -99,21 +99,21 @@ void write(const char& x) { putchar(x); }
 void write(const double& x) { printf("%.10lf", x); }
 void write(const char* x) { printf("%s", x); }
 #endif
-template <class T, class... Args>
+template <typename T, typename... Args>
 void read(T& x, Args&... args)
 {
 	read(x);
 	read(args...);
 }
-template <class... Args>
+template <typename... Args>
 void read(char* x, Args&... args)
 {
 	read(x);
 	read(args...);
 }
-template <class _OutputIterator>
+template <typename _OutputIterator>
 void read(_OutputIterator __first, _OutputIterator __last) { for (; __first != __last; ++__first) read(*__first); }
-template <class _InputIterator>
+template <typename _InputIterator>
 void wts(_InputIterator __first, _InputIterator __last)
 {
 	for (; __first != __last; ++__first)
@@ -122,7 +122,7 @@ void wts(_InputIterator __first, _InputIterator __last)
 		sp;
 	}
 }
-template <class _InputIterator>
+template <typename _InputIterator>
 void wtb(_InputIterator __first, _InputIterator __last)
 {
 	for (; __first != __last; ++__first)
@@ -141,46 +141,46 @@ void wtb(const char* x)
 	write(x);
 	br;
 }
-template <class T>
+template <typename T>
 void wts(const T& x)
 {
 	write(x);
 	sp;
 }
-template <class T>
+template <typename T>
 void wtb(const T& x)
 {
 	write(x);
 	br;
 }
-template <class... Args>
+template <typename... Args>
 void wts(const char* x, Args... args)
 {
 	wts(x);
 	wts(args...);
 }
-template <class... Args>
+template <typename... Args>
 void wtb(const char* x, Args... args)
 {
 	wts(x);
 	wtb(args...);
 }
-template <class T, class... Args>
+template <typename T, typename... Args>
 void wts(const T& x, Args... args)
 {
 	wts(x);
 	wts(args...);
 }
-template <class T, class... Args>
+template <typename T, typename... Args>
 void wtb(const T& x, Args... args)
 {
 	wts(x);
 	wtb(args...);
 }
 
-template <class T>
+template <typename T>
 inline bool up(T& x, const T& y) { return x < y ? x = y, 1 : 0; }
-template <class T>
+template <typename T>
 inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 
 const int N = 100010;
