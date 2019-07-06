@@ -111,10 +111,11 @@ void read(char* x, Args&... args)
 	read(x);
 	read(args...);
 }
-template <typename _OutputIterator>
-void read(_OutputIterator __first, _OutputIterator __last) { for (; __first != __last; ++__first) read(*__first); }
-template <typename _InputIterator>
-void wts(_InputIterator __first, _InputIterator __last)
+template <typename OutputIt, typename = typename enable_if<is_same<output_iterator_tag, typename iterator_traits<OutputIt>::iterator_category>::value ||
+(is_base_of<forward_iterator_tag, typename iterator_traits<OutputIt>::iterator_category>::value && !is_const<OutputIt>::value)>::type>
+void read(OutputIt __first, OutputIt __last) { for (; __first != __last; ++__first) read(*__first); }
+template <typename InputIt, typename = typename enable_if<is_base_of<input_iterator_tag, typename iterator_traits<InputIt>::iterator_category>::value>::type>
+void wts(InputIt __first, InputIt __last)
 {
 	for (; __first != __last; ++__first)
 	{
@@ -122,8 +123,8 @@ void wts(_InputIterator __first, _InputIterator __last)
 		sp;
 	}
 }
-template <typename _InputIterator>
-void wtb(_InputIterator __first, _InputIterator __last)
+template <typename InputIt, typename = typename enable_if<is_base_of<input_iterator_tag, typename iterator_traits<InputIt>::iterator_category>::value>::type>
+void wtb(InputIt __first, InputIt __last)
 {
 	for (; __first != __last; ++__first)
 	{

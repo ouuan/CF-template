@@ -31,30 +31,34 @@ template<typename T>void read(T&x){cin>>x;}template<typename T>void write(const 
 #define br putchar('\n')
 #define sp putchar(' ')
 template<typename T>typename enable_if<!is_integral<T>::value,void>::type read(T&x){cin>>x;}long long
- read(){char c;long long out=0,f=1;for(c=getchar();!isdigit(c)&&c!='-';c=getchar());if(c=='-'){f=-
-1;c=getchar();}for(;isdigit(c);c=getchar())out=(out<<3)+(out<<1)+c-'0';return out*f;}template<typename
- T>typename enable_if<is_integral<T>::value,T>::type read(T&x){char c;T f=1;x=0;for(c=getchar();!isdigit
-(c)&&c!='-';c=getchar());if(c=='-'){f=-1;c=getchar();}for(;isdigit(c);c=getchar())x=(x<<3)+(x<<1)+
-c-'0';return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read
-(double&x){scanf("%lf",&x);return x;}void read(char*x){scanf("%s",x);}template<typename T>typename
- enable_if<!is_integral<T>::value,void>::type write(const T&x){cout<<x;}template<typename T>typename
- enable_if<is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return
-;}if(x>9)write(x/10);putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double
-&x){printf("%.10lf",x);}void write(const char*x){printf("%s",x);}
+read(){char c;long long out=0,f=1;for(c=getchar();!isdigit(c)&&c!='-';c=getchar());if(c=='-'){f=-1;
+c=getchar();}for(;isdigit(c);c=getchar())out=(out<<3)+(out<<1)+c-'0';return out*f;}template<typename
+T>typename enable_if<is_integral<T>::value,T>::type read(T&x){char c;T f=1;x=0;for(c=getchar();!isdigit
+(c)&&c!='-';c=getchar());if(c=='-'){f=-1;c=getchar();}for(;isdigit(c);c=getchar())x=(x<<3)+(x<<1)+c-'0';
+return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read(double &x)
+{scanf("%lf",&x);return x;}void read(char*x){scanf("%s",x);}template<typename T>typename enable_if
+<!is_integral<T>::value,void>::type write(const T&x){cout<<x;}template<typename T>typename enable_if
+<is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9)write
+(x/10);putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double&x){printf
+("%.10lf",x);}void write(const char*x){printf("%s",x);}
 #endif
 template<typename T,typename...Args>void read(T&x,Args&...args){read(x);read(args...);}template<typename
-...Args>void read(char*x,Args&...args){read(x);read(args...);}template<typename _OutputIterator>void
- read(_OutputIterator __first,_OutputIterator __last){for(;__first!=__last;++__first)read(*__first
-);}template<typename _InputIterator>void wts(_InputIterator __first,_InputIterator __last){for(;__first
-!=__last;++__first){write(*__first);sp;}}template<typename _InputIterator>void wtb(_InputIterator 
-__first,_InputIterator __last){for(;__first!=__last;++__first){write(*__first);br;}}void wts(const
- char*x){write(x);sp;}void wtb(const char*x){write(x);br;}template<typename T>void wts(const T&x){
-write(x);sp;}template<typename T>void wtb(const T&x){write(x);br;}template<typename...Args>void wts
-(const char*x,Args...args){wts(x);wts(args...);}template<typename...Args>void wtb(const char*x,Args
-...args){wts(x);wtb(args...);}template<typename T,typename...Args>void wts(const T&x,Args...args){
-wts(x);wts(args...);}template<typename T,typename...Args>void wtb(const T&x,Args...args){wts(x);wtb
-(args...);}template<typename T>inline bool up(T&x,const T&y){return x<y?x=y,1:0;}template<typename
- T>inline bool dn(T&x,const T&y){return y<x?x=y,1:0;}
+...Args>void read(char*x,Args&...args){read(x);read(args...);}template<typename OutputIt,typename=typename
+enable_if<is_same<output_iterator_tag,typename iterator_traits<OutputIt>::iterator_category>::value
+||(is_base_of<forward_iterator_tag,typename iterator_traits<OutputIt>::iterator_category>::value&&!
+is_const<OutputIt>::value)>::type>void read(OutputIt __first,OutputIt __last){for(;__first!=__last;++
+__first)read(*__first);}template<typename InputIt,typename=typename enable_if<is_base_of<input_iterator_tag
+,typename iterator_traits<InputIt>::iterator_category>::value>::type>void wts(InputIt __first,InputIt
+__last){for(;__first!=__last;++__first){write(*__first);sp;}}template<typename InputIt,typename=typename
+enable_if<is_base_of<input_iterator_tag,typename iterator_traits<InputIt>::iterator_category>::value
+>::type>void wtb(InputIt __first,InputIt __last){for(;__first!=__last;++__first){write(*__first);br;}}
+void wts(const char*x){write(x);sp;}void wtb(const char*x){write(x);br;}template<typename T>void wts
+(const T&x){write(x);sp;}template<typename T>void wtb(const T&x){write(x);br;}template<typename...Args
+>void wts(const char*x,Args...args){wts(x);wts(args...);}template<typename...Args>void wtb(const char
+*x,Args...args){wts(x);wtb(args...);}template<typename T,typename...Args>void wts(const T&x,Args...args
+){wts(x);wts(args...);}template<typename T,typename...Args>void wtb(const T&x,Args...args){wts(x);wtb
+(args...);}template<typename T>inline bool up(T&x,const T&y){return x<y?x=y,1:0;}template<typename T
+>inline bool dn(T&x,const T&y){return y<x?x=y,1:0;}
 
 const int N = 100010;
 const int mod = 1000000007;
