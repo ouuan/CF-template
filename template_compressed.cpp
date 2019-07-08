@@ -23,6 +23,7 @@ const int INF=0x3f3f3f3f3f3f3f3fll;
 const int INF=0x3f3f3f3f;
 #endif
 const double eps=1e-9;mt19937 randint(chrono::steady_clock::now().time_since_epoch().count());
+int randint(int l,int r){return(int)rng()%(r-l+1)+l;}
 #ifdef FAST_IOSTREAM
 #define br cout<<'\n'
 #define sp cout<<' '
@@ -35,7 +36,7 @@ read(){char c;long long out=0,f=1;for(c=getchar();!isdigit(c)&&c!='-';c=getchar(
 c=getchar();}for(;isdigit(c);c=getchar())out=(out<<3)+(out<<1)+c-'0';return out*f;}template<typename
 T>typename enable_if<is_integral<T>::value,T>::type read(T&x){char c;T f=1;x=0;for(c=getchar();!isdigit
 (c)&&c!='-';c=getchar());if(c=='-'){f=-1;c=getchar();}for(;isdigit(c);c=getchar())x=(x<<3)+(x<<1)+c-'0';
-return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read(double &x)
+return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;}double read(double&x)
 {scanf("%lf",&x);return x;}void read(char*x){scanf("%s",x);}template<typename T>typename enable_if
 <!is_integral<T>::value,void>::type write(const T&x){cout<<x;}template<typename T>typename enable_if
 <is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9)write
