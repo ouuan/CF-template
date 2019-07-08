@@ -29,6 +29,7 @@ const int INF = 0x3f3f3f3f3f3f3f3fll;
 const int INF = 0x3f3f3f3f;
 #endif
 const double eps = 1e-9;
+mt19937 randint(chrono::steady_clock::now().time_since_epoch().count());
 
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
