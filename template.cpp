@@ -145,6 +145,11 @@ void wtb(const char* x)
 	write(x);
 	br;
 }
+void wte(const char* x)
+{
+	write(x);
+	exit(0);
+}
 template <typename T>
 void wts(const T& x)
 {
@@ -156,6 +161,12 @@ void wtb(const T& x)
 {
 	write(x);
 	br;
+}
+template <typename T>
+void wte(const T& x)
+{
+	write(x);
+	exit(0);
 }
 template <typename... Args>
 void wts(const char* x, Args... args)
@@ -169,6 +180,12 @@ void wtb(const char* x, Args... args)
 	wts(x);
 	wtb(args...);
 }
+template <typename... Args>
+void wte(const char* x, Args... args)
+{
+	wts(x);
+	wte(args...);
+}
 template <typename T, typename... Args>
 void wts(const T& x, Args... args)
 {
@@ -180,6 +197,12 @@ void wtb(const T& x, Args... args)
 {
 	wts(x);
 	wtb(args...);
+}
+template <typename T, typename... Args>
+void wte(const T& x, Args... args)
+{
+	wts(x);
+	wte(args...);
 }
 
 template <typename T>
