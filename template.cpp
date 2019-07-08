@@ -36,6 +36,12 @@ int randint(int l, int r) { return (int) rng() % (r - l + 1) + l; }
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
 #define sp cout << ' '
+long long read()
+{
+	long long x;
+	cin >> x;
+	return x;
+}
 template <typename T>
 void read(T& x) { cin >> x; }
 template <typename T>
