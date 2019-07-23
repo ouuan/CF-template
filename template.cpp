@@ -31,7 +31,7 @@ const int INF = 0x3f3f3f3f;
 const double eps = 1e-9;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-int randint(int l, int r) { return (int) rng() % (r - l + 1) + l; }
+int randint(int l, int r) { int out = rng() % (r - l + 1) + l; return out >= l ? out : out + r - l + 1; }
 
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
