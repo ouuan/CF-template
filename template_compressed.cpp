@@ -23,7 +23,7 @@ const int INF=0x3f3f3f3f3f3f3f3fll;
 const int INF=0x3f3f3f3f;
 #endif
 const double eps=1e-9;mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());int randint
-(int l,int r){return(int)rng()%(r-l+1)+l;}
+(int l,int r){int out=rng()%(r-l+1)+l;return out>=l?out:out+r-l+1;}
 #ifdef FAST_IOSTREAM
 #define br cout<<'\n'
 #define sp cout<<' '
@@ -41,8 +41,8 @@ return x*=f;}char read(char&x){for(x=getchar();isspace(x);x=getchar());return x;
 &x){scanf("%lf",&x);return x;}void read(char*x){scanf("%s",x);}template<typename T>typename enable_if
 <!is_integral<T>::value,void>::type write(const T&x){cout<<x;}template<typename T>typename enable_if<
 is_integral<T>::value,void>::type write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9)write
-(x/10);putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double&x){printf("%.10lf"
-,x);}void write(const char*x){printf("%s",x);}
+(x/10);putchar(x%10+'0');}void write(const char&x){putchar(x);}void write(const double&x){printf("%.10lf",
+x);}void write(const char*x){printf("%s",x);}
 #endif
 template<typename T,typename...Args>void read(T&x,Args&...args){read(x);read(args...);}template<typename
 ...Args>void read(char*x,Args&...args){read(x);read(args...);}template<typename OutputIt,typename=typename
@@ -64,7 +64,7 @@ Args>void wtb(const T&x,Args...args){wts(x);wtb(args...);}template<typename T,ty
 (const T&x,Args...args){wts(x);wte(args...);}template<typename T>inline bool up(T&x,const T&y){return
 x<y?x=y,1:0;}template<typename T>inline bool dn(T&x,const T&y){return y<x?x=y,1:0;}
 
-const int N = 100010;
+const int N = 500010;
 const int mod = 1000000007;
 
 

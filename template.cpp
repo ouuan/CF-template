@@ -31,7 +31,7 @@ const int INF = 0x3f3f3f3f;
 const double eps = 1e-9;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-int randint(int l, int r) { return (int) rng() % (r - l + 1) + l; }
+int randint(int l, int r) { int out = rng() % (r - l + 1) + l; return out >= l ? out : out + r - l + 1; }
 
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
@@ -216,7 +216,7 @@ inline bool up(T& x, const T& y) { return x < y ? x = y, 1 : 0; }
 template <typename T>
 inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 
-const int N = 100010;
+const int N = 500010;
 const int mod = 1000000007;
 
 
