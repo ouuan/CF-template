@@ -119,11 +119,11 @@ void read(OutputIt __first, OutputIt __last) { for (; __first != __last; ++__fir
 template <typename InputIt, typename = typename enable_if<is_base_of<input_iterator_tag, typename iterator_traits<InputIt>::iterator_category>::value>::type>
 void wts(InputIt __first, InputIt __last)
 {
-	bool isFirst = false;
+	bool isFirst = true;
 	for (; __first != __last; ++__first)
 	{
-		if (isFirst) sp;
-		else isFirst = true;
+		if (isFirst) isFirst = false;
+		else sp;
 		write(*__first);
 	}
 	br;
