@@ -12,9 +12,10 @@
 #define ms(a, x) memset(a, x, sizeof(a))
 #define fi first
 #define se second
-#define pq priority_queue
 #define pb emplace_back
+#define pq priority_queue
 #define isinf(x) (x >= INF ? -1 : x)
+#define y1 why_is_there_a_function_called_y1
 #define DEBUG(x) cerr << (#x) << ": " << x << endl
 
 using namespace std;
@@ -89,7 +90,6 @@ double read(double& x)
 	scanf("%lf", &x);
 	return x;
 }
-void read(char* x) { scanf("%s", x); }
 template <typename T>
 typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
 template <typename T>
@@ -106,16 +106,9 @@ typename enable_if<is_integral<T>::value, void>::type write(const T& x)
 }
 void write(const char& x) { putchar(x); }
 void write(const double& x) { printf("%.10lf", x); }
-void write(const char* x) { printf("%s", x); }
 #endif
 template <typename T, typename... Args>
 void read(T& x, Args&... args)
-{
-	read(x);
-	read(args...);
-}
-template <typename... Args>
-void read(char* x, Args&... args)
 {
 	read(x);
 	read(args...);
@@ -126,11 +119,14 @@ void read(OutputIt __first, OutputIt __last) { for (; __first != __last; ++__fir
 template <typename InputIt, typename = typename enable_if<is_base_of<input_iterator_tag, typename iterator_traits<InputIt>::iterator_category>::value>::type>
 void wts(InputIt __first, InputIt __last)
 {
+	bool isFirst = false;
 	for (; __first != __last; ++__first)
 	{
+		if (isFirst) sp;
+		else isFirst = true;
 		write(*__first);
-		sp;
 	}
+	br;
 }
 template <typename InputIt, typename = typename enable_if<is_base_of<input_iterator_tag, typename iterator_traits<InputIt>::iterator_category>::value>::type>
 void wtb(InputIt __first, InputIt __last)
@@ -140,21 +136,6 @@ void wtb(InputIt __first, InputIt __last)
 		write(*__first);
 		br;
 	}
-}
-void wts(const char* x)
-{
-	write(x);
-	sp;
-}
-void wtb(const char* x)
-{
-	write(x);
-	br;
-}
-void wte(const char* x)
-{
-	write(x);
-	exit(0);
 }
 template <typename T>
 void wts(const T& x)
@@ -173,24 +154,6 @@ void wte(const T& x)
 {
 	write(x);
 	exit(0);
-}
-template <typename... Args>
-void wts(const char* x, Args... args)
-{
-	wts(x);
-	wts(args...);
-}
-template <typename... Args>
-void wtb(const char* x, Args... args)
-{
-	wts(x);
-	wtb(args...);
-}
-template <typename... Args>
-void wte(const char* x, Args... args)
-{
-	wts(x);
-	wte(args...);
 }
 template <typename T, typename... Args>
 void wts(const T& x, Args... args)
