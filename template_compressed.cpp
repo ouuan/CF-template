@@ -22,7 +22,7 @@ typedef long long LoveLive;typedef pair<int,int>pii;typedef vector<int>vi;
 #ifdef int
 const int INF=0x3f3f3f3f3f3f3f3fll;
 #else
-const int INF=0x3f3f3f3f;
+const int INF=0x3f3f3f3f;typedef long long ll;
 #endif
 const double eps=1e-9;mt19937 rng(chrono::steady_clock::now().time_since_epoch().
 count());int randint(int l,int r){int out=rng()%(r-l+1)+l;return out>=l?out:out+

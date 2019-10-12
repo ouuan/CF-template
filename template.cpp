@@ -28,6 +28,7 @@ typedef vector<int> vi;
 const int INF = 0x3f3f3f3f3f3f3f3fll;
 #else
 const int INF = 0x3f3f3f3f;
+typedef long long ll;
 #endif
 const double eps = 1e-9;
 
