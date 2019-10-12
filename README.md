@@ -17,6 +17,8 @@ Coding Faster Template \sqrt{}
 
    `dn(x, y)`：同 up，设置为 min。
 
+6. [segmentTree](https://github.com/ouuan/segmentTree)
+
 ### 压缩方式
 
 1. 将 `(?<=[(){}<>,;.=&\|!+\-*/%:?]) | (?=[(){}<>,;.=&\|!+\-*/%:?])|  |	|^ | $|` 替换为空。

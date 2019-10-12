@@ -51,9 +51,9 @@ write(const T&x){if(x<0){putchar('-');write(-x);return;}if(x>9)write(x/10);putch
 #endif
 template<typename T,typename...Args>void read(T&x,Args&...args){read(x);read(args
 ...);}template<typename OutputIt,typename=typename enable_if<is_same<output_iterator_tag
-,typename iterator_traits<OutputIt>::iterator_category>::value||(
-is_base_of<forward_iterator_tag,typename iterator_traits<OutputIt>::iterator_category>::value
-&&!is_const<OutputIt>::value)>::type>void read(OutputIt __first,OutputIt __last){for(;__first
+,typename iterator_traits<OutputIt>::iterator_category>::value||(is_base_of<
+forward_iterator_tag,typename iterator_traits<OutputIt>::iterator_category>::value&&!
+is_const<OutputIt>::value)>::type>void read(OutputIt __first,OutputIt __last){for(;__first
 !=__last;++__first)read(*__first);}template<typename InputIt,typename=typename enable_if
 <is_base_of<input_iterator_tag,typename iterator_traits<InputIt>::iterator_category
 >::value>::type>void wts(InputIt __first,InputIt __last){bool isFirst=true;for(;
@@ -67,7 +67,32 @@ T&x){write(x);br;}template<typename T>void wte(const T&x){write(x);exit(0);}temp
 template<typename T,typename...Args>void wtb(const T&x,Args...args){wts(x);wtb(args
 ...);}template<typename T,typename...Args>void wte(const T&x,Args...args){wts(x);
 wte(args...);}template<typename T>inline bool up(T&x,const T&y){return x<y?x=y,1
-:0;}template<typename T>inline bool dn(T&x,const T&y){return y<x?x=y,1:0;}
+:0;}template<typename T>inline bool dn(T&x,const T&y){return y<x?x=y,1:0;}template
+<typename valueType,typename tagType>class segmentTreeNode{public:int left,right
+;valueType val;tagType tag;};template<typename valueType,typename tagType,valueType
+(*merge)(valueType,valueType),void(*update)(segmentTreeNode<valueType,tagType>&,
+tagType)>class segmentTree{private:int leftRange,rightRange;std::vector<segmentTreeNode
+<valueType,tagType>>nodes;valueType zero;void pushup(int cur){nodes[cur].val=merge
+(nodes[cur<<1].val,nodes[cur<<1|1].val);}void pushdown(int cur){update(nodes[cur
+<<1],nodes[cur].tag);update(nodes[cur<<1|1],nodes[cur].tag);nodes[cur].tag=0;}void
+build(int cur,int l,int r,const std::vector<valueType>&initValue){nodes[cur].left
+=l;nodes[cur].right=r;nodes[cur].tag=0;if(l==r-1)nodes[cur].val=initValue[l-leftRange
+];else{build(cur<<1,l,(l+r)>>1,initValue);build(cur<<1|1,(l+r)>>1,r,initValue);pushup
+(cur);}}void init(const std::vector<valueType>&_initValue,const valueType&_zero){
+zero=_zero;nodes.resize((rightRange-leftRange)<<2);build(1,leftRange,rightRange,
+_initValue);}void modify(int cur,int l,int r,int L,int R,const tagType&tag){if(l
+>=R||r<=L)return;if(L<=l&&r<=R)update(nodes[cur],tag);else{pushdown(cur);modify(
+cur<<1,l,(l+r)>>1,L,R,tag);modify(cur<<1|1,(l+r)>>1,r,L,R,tag);pushup(cur);}}valueType
+query(int cur,int l,int r,int L,int R){if(l>=R||r<=L)return zero;if(L<=l&&r<=R)
+return nodes[cur].val;pushdown(cur);return merge(query(cur<<1,l,(l+r)>>1,L,R),query
+(cur<<1|1,(l+r)>>1,r,L,R));}public:segmentTree(){}segmentTree(int _leftRange,int
+_rightRange,const std::vector<valueType>&_initValue,const valueType&_zero){leftRange
+=_leftRange;rightRange=_rightRange;init(_initValue,_zero);}segmentTree(int size,
+const std::vector<valueType>&_initValue,const valueType&_zero){leftRange=1;rightRange
+=size+1;init(_initValue,_zero);}void modify(int l,int r,const tagType&tag){modify
+(1,leftRange,rightRange,l,r,tag);}void modify(int p,const tagType&tag){modify(p,
+p+1,tag);}valueType query(int l,int r){return query(1,leftRange,rightRange,l,r);}
+valueType query(int p){return query(p,p+1);}};
 
 const int N = 500010;
 const int mod = 1000000007;
@@ -77,11 +102,11 @@ const int mod = 1000000007;
 signed main()
 {
 #ifdef FAST_IOSTREAM
-	cin.sync_with_stdio(false);
-	cin.tie(0);
+    cin.sync_with_stdio(false);
+    cin.tie(0);
 #endif
-	
-	
-	
-	return 0;
+    
+    
+    
+    return 0;
 }
