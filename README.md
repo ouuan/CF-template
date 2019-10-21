@@ -19,6 +19,10 @@ Coding Faster Template \sqrt{}
 
 6. [segmentTree](https://github.com/ouuan/segmentTree)
 
+7. [maxFlow](https://github.com/ouuan/maxFlow)
+
+8. [customHash](https://codeforces.com/blog/entry/62393)
+
 ### 压缩方式
 
 1. 将 `(?<=[(){}<>,;.=&\|!+\-*/%:?]) | (?=[(){}<>,;.=&\|!+\-*/%:?])|  |	|^ | $|` 替换为空。
