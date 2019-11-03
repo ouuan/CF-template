@@ -403,10 +403,8 @@ struct customHash
     }
 };
 
-const int N = 1000010;
-const int mod = 1000000007;
-
-
+const int mod = (1e9 + 7//, 998244353
+);
 
 signed main()
 {
