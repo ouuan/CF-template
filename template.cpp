@@ -23,6 +23,7 @@ using namespace std;
 typedef long long LoveLive;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
+typedef long double ld;
 
 #ifdef int
 const int INF = 0x3f3f3f3f3f3f3f3fll;
@@ -30,7 +31,8 @@ const int INF = 0x3f3f3f3f3f3f3f3fll;
 const int INF = 0x3f3f3f3f;
 typedef long long ll;
 #endif
-const double eps = 1e-9;
+const double inf = 1e121;
+const double eps = 1e-10;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int randint(int l, int r) { int out = rng() % (r - l + 1) + l; return out >= l ? out : out + r - l + 1; }
@@ -91,6 +93,11 @@ double read(double& x)
     scanf("%lf", &x);
     return x;
 }
+ld read(ld& x)
+{
+    scanf("%Lf", &x);
+    return x;
+}
 template <typename T>
 typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
 template <typename T>
@@ -107,6 +114,7 @@ typename enable_if<is_integral<T>::value, void>::type write(const T& x)
 }
 void write(const char& x) { putchar(x); }
 void write(const double& x) { printf("%.10lf", x); }
+void write(const ld& x) { printf("%.10Lf", x); }
 #endif
 template <typename T, typename... Args>
 void read(T& x, Args&... args)
@@ -303,93 +311,93 @@ public:
 class maxFlow
 {
 private:
-	typedef long long ll;
-	std::queue<int> q;
-	std::vector<int> head, cur, nxt, to, dep;
-	std::vector<ll> cap; 
+    typedef long long ll;
+    std::queue<int> q;
+    std::vector<int> head, cur, nxt, to, dep;
+    std::vector<ll> cap; 
 public:
-	maxFlow(int _n = 0) { init(_n); }
-	void init(int _n)
-	{
-		head.clear();
-		head.resize(_n + 1, 0);
-		nxt.resize(2);
-		to.resize(2);
-		cap.resize(2);
-	}
-	void init() { init(head.size() - 1); }
-	void add(int u, int v, ll w)
-	{
-		nxt.push_back(head[u]);
-		head[u] = to.size();
-		to.push_back(v);
-		cap.push_back(w);
-	}
-	void Add(int u, int v, ll w)
-	{
-		add(u, v, w);
-		add(v, u, 0);
-	}
-	void del(int x) { cap[x << 1] = cap[x << 1 | 1] = 0; }
-	bool bfs(int s, int t)
-	{
-		dep.clear();
-		dep.resize(head.size(), -1);
-		dep[s] = 0;
-		q.push(s);
-		while (!q.empty())
-		{
-			int u = q.front();
-			q.pop();
-			for (int i = head[u]; i; i = nxt[i])
-			{
-				int v = to[i];
-				ll w = cap[i];
-				if (w > 0 && dep[v] == -1)
-				{
-					dep[v] = dep[u] + 1;
-					q.push(v);
-				}
-			}
-		}
-		return ~dep[t];
-	}
-	ll dfs(int u, ll flow, int t)
-	{
-		if (dep[u] == dep[t]) return u == t ? flow : 0;
-		ll out = 0;
-		for (int& i = cur[u]; i; i = nxt[i])
-		{
-			int v = to[i];
-			ll w = cap[i];
-			if (w > 0 && dep[v] == dep[u] + 1)
-			{
-				ll f = dfs(v, std::min(w, flow - out), t);
-				cap[i] -= f;
-				cap[i ^ 1] += f;
-				out += f;
-				if (out == flow) return out;
-			}
-		}
-		return out;
-	}
-	ll maxflow(int s, int t)
-	{
-		ll out = 0;
-		while (bfs(s, t))
-		{
-			cur = head;
-			out += dfs(s, 0x7fffffffffffffffll, t);
-		}
-		return out;
-	}
-	ll getflow(int x) const { return cap[x << 1 | 1]; }
+    maxFlow(int _n = 0) { init(_n); }
+    void init(int _n)
+    {
+        head.clear();
+        head.resize(_n + 1, 0);
+        nxt.resize(2);
+        to.resize(2);
+        cap.resize(2);
+    }
+    void init() { init(head.size() - 1); }
+    void add(int u, int v, ll w)
+    {
+        nxt.push_back(head[u]);
+        head[u] = to.size();
+        to.push_back(v);
+        cap.push_back(w);
+    }
+    void Add(int u, int v, ll w)
+    {
+        add(u, v, w);
+        add(v, u, 0);
+    }
+    void del(int x) { cap[x << 1] = cap[x << 1 | 1] = 0; }
+    bool bfs(int s, int t)
+    {
+        dep.clear();
+        dep.resize(head.size(), -1);
+        dep[s] = 0;
+        q.push(s);
+        while (!q.empty())
+        {
+            int u = q.front();
+            q.pop();
+            for (int i = head[u]; i; i = nxt[i])
+            {
+                int v = to[i];
+                ll w = cap[i];
+                if (w > 0 && dep[v] == -1)
+                {
+                    dep[v] = dep[u] + 1;
+                    q.push(v);
+                }
+            }
+        }
+        return ~dep[t];
+    }
+    ll dfs(int u, ll flow, int t)
+    {
+        if (dep[u] == dep[t]) return u == t ? flow : 0;
+        ll out = 0;
+        for (int& i = cur[u]; i; i = nxt[i])
+        {
+            int v = to[i];
+            ll w = cap[i];
+            if (w > 0 && dep[v] == dep[u] + 1)
+            {
+                ll f = dfs(v, std::min(w, flow - out), t);
+                cap[i] -= f;
+                cap[i ^ 1] += f;
+                out += f;
+                if (out == flow) return out;
+            }
+        }
+        return out;
+    }
+    ll maxflow(int s, int t)
+    {
+        ll out = 0;
+        while (bfs(s, t))
+        {
+            cur = head;
+            out += dfs(s, 0x7fffffffffffffffll, t);
+        }
+        return out;
+    }
+    ll getflow(int x) const { return cap[x << 1 | 1]; }
 };
 
 struct customHash
 {
     static uint64_t splitmix64(uint64_t x)
-	{
+    {
         x += 0x9e3779b97f4a7c15;
         x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
         x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
@@ -397,7 +405,7 @@ struct customHash
     }
 
     size_t operator()(uint64_t x) const
-	{
+    {
         static const uint64_t FIXED_RANDOM = rng();
         return splitmix64(x + FIXED_RANDOM);
     }
