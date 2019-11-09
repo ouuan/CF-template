@@ -16,13 +16,12 @@
 																																													#define isinf(x)(x>=INF?-1:x)
 																																													#define y1 why_is_there_a_function_called_y1
 																																													#define DEBUG(x)cerr<<(#x)<<":"<<x<<endl
-																																													using namespace std;typedef long long LoveLive;typedef pair<int,int>pii;typedef vector<int>vi;typedef long double ld;
+																																													using namespace std;typedef long long LoveLive;typedef pair<int,int>pii;typedef vector<int>vi;typedef long double ld;const double inf=1e121;const double eps=1e-10;mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());int randint(int l,int r){int out=rng()%(r-l+1)+l;return out>=l?out:out+r-l+1;}
 																																													#ifdef int
 																																													const int INF=0x3f3f3f3f3f3f3f3fll;
 																																													#else
 																																													const int INF=0x3f3f3f3f;typedef long long ll;
 																																													#endif
-																																													const double inf=1e121;const double eps=1e-10;mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());int randint(int l,int r){int out=rng()%(r-l+1)+l;return out>=l?out:out+r-l+1;}
 																																													#ifdef FAST_IOSTREAM
 																																													#define br cout<<'\n'
 																																													#define sp cout<<' '
