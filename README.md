@@ -17,6 +17,8 @@ Coding Faster Template \sqrt{}
 
    `dn(x, y)`：同 up，设置为 min。
 
+   `inRange(x, l, r)`: 判断 x 是否在 [l, r] 内。
+
 6. [segmentTree](https://github.com/ouuan/segmentTree)
 
 7. [maxFlow](https://github.com/ouuan/maxFlow)
