@@ -135,6 +135,7 @@ typedef long long ll;
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
 #define sp cout << ' '
+#define fl cout.flush()
 long long read()
 {
     long long x;
@@ -148,6 +149,7 @@ void write(const T& x) { cout << x; }
 #else
 #define br putchar('\n')
 #define sp putchar(' ')
+#define fl fflush(stdout)
 template <typename T>
 typename enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
 long long read()
