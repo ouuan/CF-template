@@ -3,7 +3,7 @@
 #endif
 #include <bits/stdc++.h>
 
-#define int LoveLive
+#define int ll
 //#define FAST_IOSTREAM 1
 
 #define For(i, l, r) for (int i = (l), i##end = (r); i <= i##end; ++i)
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-typedef long long LoveLive;
+typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef long double ld;
@@ -129,16 +129,15 @@ void debug_out(Head H, Tail... T) {
 const int INF = 0x3f3f3f3f3f3f3f3fll;
 #else
 const int INF = 0x3f3f3f3f;
-typedef long long ll;
 #endif
 
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
 #define sp cout << ' '
 #define fl cout.flush()
-long long read()
+ll read()
 {
-    long long x;
+    ll x;
     cin >> x;
     return x;
 }
@@ -152,10 +151,10 @@ void write(const T& x) { cout << x; }
 #define fl fflush(stdout)
 template <typename T>
 typename enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
-long long read()
+ll read()
 {
     char c;
-    long long out = 0, f = 1;
+    ll out = 0, f = 1;
     for (c = getchar(); !isdigit(c) && c != '-'; c = getchar());
     if (c == '-')
     {
@@ -286,234 +285,6 @@ template <typename T>
 inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 template <typename T>
 inline bool inRange(const T& x, const T& l, const T& r) { return !(x < l) && !(r < x); }
-
-template<typename valueType, typename tagType>
-class segmentTreeNode
-{
-public:
-    int id, left, right;
-    valueType val;
-    tagType tag;
-};
-
-template<typename valueType,
-         typename tagType,
-         valueType (*merge)(valueType, valueType),
-         void (*update)(segmentTreeNode<valueType, tagType>&, tagType)>
-class segmentTree
-{
-private:
-    std::vector<segmentTreeNode<valueType, tagType> > nodes;
-    int leftRange, rightRange;
-    valueType valueZero;
-    tagType tagZero;
-    
-    void pushup(int cur)
-    {
-        nodes[cur].val = merge(nodes[cur << 1].val, nodes[cur << 1 | 1].val);
-    }
-    
-    void pushdown(int cur)
-    {
-        update(nodes[cur << 1], nodes[cur].tag);
-        update(nodes[cur << 1 | 1], nodes[cur].tag);
-        nodes[cur].tag = tagZero;
-    }
-    
-    void build(int cur, int l, int r, const std::vector<valueType>& initValue)
-    {
-        nodes[cur].id = cur;
-        nodes[cur].left = l;
-        nodes[cur].right = r;
-        nodes[cur].tag = tagZero;
-        if (l == r - 1) nodes[cur].val = initValue[l - leftRange];
-        else
-        {
-            build(cur << 1, l, (l + r) >> 1, initValue);
-            build(cur << 1 | 1, (l + r) >> 1, r, initValue);
-            pushup(cur);
-        }
-    }
-    
-    void init(const std::vector<valueType>& _initValue,
-              const valueType& _valueZero,
-              const tagType& _tagZero)
-    {
-        valueZero = _valueZero;
-        tagZero = _tagZero;
-        nodes.resize((rightRange - leftRange) << 2);
-        build(1, leftRange, rightRange, _initValue);
-    }
-    
-    void modify(int cur, int l, int r, int L, int R, const tagType& tag)
-    {
-        if (l >= R || r <= L) return;
-        if (L <= l && r <= R) update(nodes[cur], tag);
-        else
-        {
-            pushdown(cur);
-            modify(cur << 1, l, (l + r) >> 1, L, R, tag);
-            modify(cur << 1 | 1, (l + r) >> 1, r, L, R, tag);
-            pushup(cur);
-        }
-    }
-    
-    valueType query(int cur, int l, int r, int L, int R)
-    {
-        if (l >= R || r <= L) return valueZero;
-        if (L <= l && r <= R) return nodes[cur].val;
-        pushdown(cur);
-        return merge(query(cur << 1, l, (l + r) >> 1, L, R),
-                     query(cur << 1 | 1, (l + r) >> 1, r, L, R));
-    }
-    
-public:
-    segmentTree() {}
-    
-    segmentTree(int _leftRange,
-                int _rightRange,
-                const std::vector<valueType>& _initValue,
-                const valueType& _valueZero,
-                const tagType& _tagZero)
-    {
-        leftRange = _leftRange;
-        rightRange = _rightRange;
-        init(_initValue, _valueZero, _tagZero);
-    }
-    
-    segmentTree(int size,
-                const std::vector<valueType>& _initValue,
-                const valueType& _valueZero,
-                const tagType& _tagZero)
-    {
-        leftRange = 1;
-        rightRange = size + 1;
-        init(_initValue, _valueZero, _tagZero);
-    }
-    
-    void modify(int l, int r, const tagType& tag)
-    {
-        modify(1, leftRange, rightRange, l, r, tag);
-    }
-    
-    void modify(int p, const tagType& tag)
-    {
-        modify(p, p + 1, tag);
-    }
-    
-    valueType query(int l, int r)
-    {
-        return query(1, leftRange, rightRange, l, r);
-    }
-    
-    valueType query(int p)
-    {
-        return query(p, p + 1);
-    }
-};
-
-class maxFlow
-{
-private:
-    typedef long long ll;
-    std::queue<int> q;
-    std::vector<int> head, cur, nxt, to, dep;
-    std::vector<ll> cap; 
-public:
-    maxFlow(int _n = 0) { init(_n); }
-    void init(int _n)
-    {
-        head.clear();
-        head.resize(_n + 1, 0);
-        nxt.resize(2);
-        to.resize(2);
-        cap.resize(2);
-    }
-    void init() { init(head.size() - 1); }
-    void add(int u, int v, ll w)
-    {
-        nxt.push_back(head[u]);
-        head[u] = to.size();
-        to.push_back(v);
-        cap.push_back(w);
-    }
-    void Add(int u, int v, ll w)
-    {
-        add(u, v, w);
-        add(v, u, 0);
-    }
-    void del(int x) { cap[x << 1] = cap[x << 1 | 1] = 0; }
-    bool bfs(int s, int t)
-    {
-        dep.clear();
-        dep.resize(head.size(), -1);
-        dep[s] = 0;
-        q.push(s);
-        while (!q.empty())
-        {
-            int u = q.front();
-            q.pop();
-            for (int i = head[u]; i; i = nxt[i])
-            {
-                int v = to[i];
-                ll w = cap[i];
-                if (w > 0 && dep[v] == -1)
-                {
-                    dep[v] = dep[u] + 1;
-                    q.push(v);
-                }
-            }
-        }
-        return ~dep[t];
-    }
-    ll dfs(int u, ll flow, int t)
-    {
-        if (dep[u] == dep[t]) return u == t ? flow : 0;
-        ll out = 0;
-        for (int& i = cur[u]; i; i = nxt[i])
-        {
-            int v = to[i];
-            ll w = cap[i];
-            if (w > 0 && dep[v] == dep[u] + 1)
-            {
-                ll f = dfs(v, std::min(w, flow - out), t);
-                cap[i] -= f;
-                cap[i ^ 1] += f;
-                out += f;
-                if (out == flow) return out;
-            }
-        }
-        return out;
-    }
-    ll maxflow(int s, int t)
-    {
-        ll out = 0;
-        while (bfs(s, t))
-        {
-            cur = head;
-            out += dfs(s, 0x7fffffffffffffffll, t);
-        }
-        return out;
-    }
-    ll getflow(int x) const { return cap[x << 1 | 1]; }
-};
-
-struct customHash
-{
-    static uint64_t splitmix64(uint64_t x)
-    {
-        x += 0x9e3779b97f4a7c15;
-        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-        return x ^ (x >> 31);
-    }
-
-    size_t operator()(uint64_t x) const
-    {
-        static const uint64_t FIXED_RANDOM = rng();
-        return splitmix64(x + FIXED_RANDOM);
-    }
-};
 
 
 

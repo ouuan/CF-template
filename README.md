@@ -21,12 +21,6 @@ Coding Faster Template \sqrt{}
 
    `inRange(x, l, r)`: 判断 x 是否在 [l, r] 内。
 
-7. [segmentTree](https://github.com/ouuan/segmentTree)
-
-8. [maxFlow](https://github.com/ouuan/maxFlow)
-
-9. [customHash](https://codeforces.com/blog/entry/62393)
-
 ### 压缩方式
 
 1. 将 `(?<=[(){}<>,;.=&\|!+\-*/%:?]) | (?=[(){}<>,;.=&\|!+\-*/%:?])|  |	|^ | $|` 替换为空。
