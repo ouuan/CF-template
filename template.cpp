@@ -9,7 +9,7 @@
 #define For(i, l, r) for (int i = (l), i##end = (r); i <= i##end; ++i)
 #define FOR(i, r, l) for (int i = (r), i##end = (l); i >= i##end; --i)
 #define SON(i, u) for (int i = head[u]; i; i = nxt[i])
-#define ms(a, x) memset(a, x, sizeof(a))
+#define BE(x) (x).begin(), (x).end()
 #define fi first
 #define se second
 #define pb emplace_back
