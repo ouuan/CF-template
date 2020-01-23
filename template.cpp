@@ -119,6 +119,11 @@ void debug_out(Head H, Tail... T) {
     debug_out(T...);
 }
 
+template <typename T>
+struct is_pair { static const bool value = false; };
+template <typename T, typename U>
+struct is_pair<std::pair<T, U> > { static const bool value = true; };
+
 #ifdef OUUAN
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
 #else
@@ -150,7 +155,7 @@ void write(const T& x) { cout << x; }
 #define sp putchar(' ')
 #define fl fflush(stdout)
 template <typename T>
-typename enable_if<!is_integral<T>::value, void>::type read(T& x) { cin >> x; }
+typename enable_if<!is_integral<T>::value && !is_pair<T>::value, void>::type read(T& x) { cin >> x; }
 ll read()
 {
     char c;
@@ -195,7 +200,7 @@ ld read(ld& x)
     return x;
 }
 template <typename T>
-typename enable_if<!is_integral<T>::value, void>::type write(const T& x) { cout << x; }
+typename enable_if<!is_integral<T>::value && !is_pair<T>::value, void>::type write(const T& x) { cout << x; }
 template <typename T>
 typename enable_if<is_integral<T>::value, void>::type write(const T& x)
 {
@@ -212,6 +217,19 @@ void write(const char& x) { putchar(x); }
 void write(const double& x) { printf("%.10lf", x); }
 void write(const ld& x) { printf("%.10Lf", x); }
 #endif
+template <typename T>
+typename enable_if<is_pair<T>::value, void>::type read(T& x)
+{
+    read(x.fi);
+    read(x.se);
+}
+template <typename T>
+typename enable_if<is_pair<T>::value, void>::type write(const T& x)
+{
+    write(x.fi);
+    sp;
+    write(x.se);
+}
 template <typename T, typename... Args>
 void read(T& x, Args&... args)
 {
