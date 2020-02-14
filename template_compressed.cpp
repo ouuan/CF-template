@@ -10,7 +10,8 @@
 																																																	#define BE(x)(x).begin(),(x).end()
 																																																	#define fi first
 																																																	#define se second
-																																																	#define pb emplace_back
+																																																	#define pb push_back
+																																																	#define eb emplace_back
 																																																	#define pq priority_queue
 																																																	#define isinf(x)(x>=INF?-1:x)
 																																																	#define y1 why_is_there_a_function_called_y1
