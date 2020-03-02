@@ -304,6 +304,9 @@ template <typename T>
 inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 template <typename T>
 inline bool inRange(const T& x, const T& l, const T& r) { return !(x < l) && !(r < x); }
+#define min minOfDifferentTypes
+template <typename T1, typename T2>
+inline auto minOfDifferentTypes(const T1 &x, const T2 &y)->decltype(x < y ? x : y) { return x < y ? x : y; }
 
 
 
