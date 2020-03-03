@@ -15,6 +15,7 @@
 #define pb push_back
 #define eb emplace_back
 #define pq priority_queue
+#define min minOfDifferentTypes
 #define isinf(x) (x >= INF ? -1 : x)
 #define y1 why_is_there_a_function_called_y1
 
@@ -304,7 +305,6 @@ template <typename T>
 inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
 template <typename T>
 inline bool inRange(const T& x, const T& l, const T& r) { return !(x < l) && !(r < x); }
-#define min minOfDifferentTypes
 template <typename T1, typename T2>
 inline auto minOfDifferentTypes(const T1 &x, const T2 &y)->decltype(x < y ? x : y) { return x < y ? x : y; }
 
