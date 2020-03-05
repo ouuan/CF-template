@@ -302,10 +302,10 @@ void wte(const T& x, Args... args)
     wte(args...);
 }
 
-template <typename T>
-inline bool up(T& x, const T& y) { return x < y ? x = y, 1 : 0; }
-template <typename T>
-inline bool dn(T& x, const T& y) { return y < x ? x = y, 1 : 0; }
+template <typename T1, typename T2>
+inline bool up(T1& x, const T2& y) { return x < y ? x = y, 1 : 0; }
+template <typename T1, typename T2>
+inline bool dn(T1& x, const T2& y) { return y < x ? x = y, 1 : 0; }
 template <typename T>
 inline bool inRange(const T& x, const T& l, const T& r) { return !(x < l) && !(r < x); }
 template <typename T1, typename T2>
