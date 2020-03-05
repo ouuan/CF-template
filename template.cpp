@@ -24,6 +24,9 @@ using namespace std;
 typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<bool> vb;
+typedef vector<pii> vpii;
 typedef long double ld;
 
 const double inf = 1e121;
