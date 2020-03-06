@@ -25,9 +25,14 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
+typedef vector<vvi> v3i;
+typedef vector<v3i> v4i;
 typedef vector<bool> vb;
 typedef vector<vb> vvb;
+typedef vector<vvb> v3b;
 typedef vector<pii> vpii;
+typedef vector<vpii> vvpii;
+typedef vector<vvpii> v3pii;
 typedef long double ld;
 
 const double inf = 1e121;
