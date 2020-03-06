@@ -26,6 +26,7 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<bool> vb;
+typedef vector<vb> vvb;
 typedef vector<pii> vpii;
 typedef long double ld;
 
