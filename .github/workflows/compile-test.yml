@@ -22,5 +22,5 @@ jobs:
     
     - name: "Compile"
       run: |
-        g++ template.cpp -o template
-        g++ template_compressed.cpp -o template_compressed
+        g++ template.cpp -o template -std=c++11
+        g++ template_compressed.cpp -o template_compressed -std=c++11
