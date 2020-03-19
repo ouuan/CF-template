@@ -323,6 +323,8 @@ template <typename T1, typename T2, typename T3>
 inline T1 &madd(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) (x + y) % modulo; }
 template <typename T1, typename T2, typename T3>
 inline T1 &mmul(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) x * y % modulo; }
+template <typename T1, typename T2, typename T3>
+inline int modadd(int x, int y, int modulo) { return (x += y) >= modulo ? x - modulo : x; }
 
 
 
