@@ -1,4 +1,7 @@
 # CF-template
+
+[![Compile Test](https://github.com/ouuan/CF-template/workflows/Compile%20Test/badge.svg)](https://github.com/ouuan/CF-template/actions)
+
 CodeForces Template \times
 
 Coding Faster Template \sqrt{}

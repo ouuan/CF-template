@@ -1,0 +1,26 @@
+name: "Compile Test"
+
+on:
+  push:
+    paths-ignore:
+    - '*.md'
+  pull_request:
+    paths-ignore:
+    - '*.md'
+
+jobs:
+  build:
+    name: "Compile Test on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: "Compile"
+      run: |
+        g++ template.cpp -o template
+        g++ template_compressed.cpp -o template_compressed
