@@ -26,18 +26,28 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
+typedef vvi v2i;
 typedef vector<vvi> v3i;
 typedef vector<v3i> v4i;
 typedef vector<bool> vb;
 typedef vector<vb> vvb;
+typedef vvb v2b;
 typedef vector<vvb> v3b;
+typedef vector<v3b> v4b;
 typedef vector<pii> vpii;
 typedef vector<vpii> vvpii;
+typedef vvpii v2pii;
 typedef vector<vvpii> v3pii;
+typedef vector<v3pii> v4pii;
 typedef long double ld;
+typedef vector<ld> vd;
+typedef vector<vd> vvd;
+typedef vvd v2d;
+typedef vector<v2d> v3d;
+typedef vector<v3d> v4d;
 
-const double inf = 1e121;
-const double eps = 1e-10;
+const ld inf = 1e121;
+const ld eps = 1e-10;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int randint(int l, int r) { int out = rng() % (r - l + 1) + l; return out >= l ? out : out + r - l + 1; }
