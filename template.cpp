@@ -330,7 +330,7 @@ inline auto minOfDifferentTypes(const T1 &x, const T2 &y)->decltype(x < y ? x : 
 template <typename T1, typename T2>
 inline auto maxOfDifferentTypes(const T1 &x, const T2 &y)->decltype(x < y ? y : x) { return x < y ? y : x; }
 template <typename T1, typename T2, typename T3>
-inline T1 &madd(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) (x + y) % modulo; }
+inline T1 &madd(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) (x + y + modulo) % modulo; }
 template <typename T1, typename T2, typename T3>
 inline T1 &mmul(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) x * y % modulo; }
 template <typename T1, typename T2, typename T3>
