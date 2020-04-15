@@ -17,7 +17,6 @@
 #define pq priority_queue
 #define min minOfDifferentTypes
 #define max maxOfDifferentTypes
-#define isinf(x) (x >= INF ? -1 : x)
 #define y1 why_is_there_a_function_called_y1
 
 using namespace std;
@@ -335,6 +334,8 @@ template <typename T1, typename T2, typename T3>
 inline T1 &mmul(T1 &x, const T2 &y, const T3 &modulo) { return x = (ll) x * y % modulo; }
 template <typename T1, typename T2, typename T3>
 inline int modadd(int x, int y, int modulo) { return (x += y) >= modulo ? x - modulo : x; }
+inline int isinf(int x) { return x < INF ? x : -1; }
+inline void yesno(bool x) { wtb(x ? "Yes" : "No"); }
 
 
 
