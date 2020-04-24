@@ -38,15 +38,14 @@ typedef vector<vpii> vvpii;
 typedef vvpii v2pii;
 typedef vector<vvpii> v3pii;
 typedef vector<v3pii> v4pii;
-typedef long double ld;
-typedef vector<ld> vd;
+typedef vector<double> vd;
 typedef vector<vd> vvd;
 typedef vvd v2d;
 typedef vector<v2d> v3d;
 typedef vector<v3d> v4d;
 
-const ld inf = 1e121;
-const ld eps = 1e-10;
+const double inf = 1e121;
+const double eps = 1e-10;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int randint(int l, int r) { int out = rng() % (r - l + 1) + l; return out >= l ? out : out + r - l + 1; }
@@ -150,13 +149,11 @@ struct is_pair<std::pair<T, U> > { static const bool value = true; };
 #else
 #define debug(...) 42
 #endif
-
 #ifdef int
 const int INF = 0x3f3f3f3f3f3f3f3fll;
 #else
 const int INF = 0x3f3f3f3f;
 #endif
-
 #ifdef FAST_IOSTREAM
 #define br cout << '\n'
 #define sp cout << ' '
@@ -215,11 +212,6 @@ double read(double& x)
     scanf("%lf", &x);
     return x;
 }
-ld read(ld& x)
-{
-    scanf("%Lf", &x);
-    return x;
-}
 template <typename T>
 typename enable_if<!is_integral<T>::value && !is_pair<T>::value, void>::type write(const T& x) { cout << x; }
 template <typename T>
@@ -236,7 +228,6 @@ typename enable_if<is_integral<T>::value, void>::type write(const T& x)
 }
 void write(const char& x) { putchar(x); }
 void write(const double& x) { printf("%.10lf", x); }
-void write(const ld& x) { printf("%.10Lf", x); }
 #endif
 template <typename T>
 typename enable_if<is_pair<T>::value, void>::type read(T& x)
