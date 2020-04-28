@@ -178,7 +178,7 @@ ll read()
 {
     char c;
     ll out = 0, f = 1;
-    for (c = getchar(); !isdigit(c) && c != '-'; c = getchar());
+    for (c = getchar(); !isdigit(c) && c != '-'; c = getchar()) {}
     if (c == '-')
     {
         f = -1;
@@ -193,7 +193,7 @@ typename enable_if<is_integral<T>::value, T>::type read(T& x)
     char c;
     T f = 1;
     x = 0;
-    for (c = getchar(); !isdigit(c) && c != '-'; c = getchar());
+    for (c = getchar(); !isdigit(c) && c != '-'; c = getchar()) {}
     if (c == '-')
     {
         f = -1;
@@ -204,7 +204,7 @@ typename enable_if<is_integral<T>::value, T>::type read(T& x)
 }
 char read(char& x)
 {
-    for (x = getchar(); isspace(x); x = getchar());
+    for (x = getchar(); isspace(x); x = getchar()) {}
     return x;
 }
 double read(double& x)
