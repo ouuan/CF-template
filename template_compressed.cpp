@@ -10,6 +10,7 @@
 																																																	#define FOR(i,r,l)for(int i=(r),i##end=(l);i>=i##end;--i)
 																																																	#define SON(i,u)for(int i=head[u];i;i=nxt[i])
 																																																	#define BE(x)(x).begin(),(x).end()
+																																																	#define BE1(x)((x).begin()+1),(x).end()
 																																																	#define fi first
 																																																	#define se second
 																																																	#define pb push_back
