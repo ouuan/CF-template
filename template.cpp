@@ -228,7 +228,7 @@ typename enable_if<is_integral<T>::value, void>::type write(const T& x)
     putchar(x % 10 + '0');
 }
 void write(const char& x) { putchar(x); }
-void write(const double& x) { printf("%.10lf", x); }
+void write(const double& x) { printf("%.12lf", x); }
 #endif
 template <typename T>
 typename enable_if<is_pair<T>::value, void>::type read(T& x)
