@@ -34,7 +34,7 @@
 																																																	#define br cout<<'\n'
 																																																	#define sp cout<<' '
 																																																	#define fl cout.flush()
-																																																	ll read(){ll x;cin>>x;return x;}template<typename T>void read(T&x){cin>>x;}template<typename T>void write(const T&x){cout<<x;}
+																																																	ll read(){ll x;cin>>x;return x;}template<typename T>void read(T&x){cin>>x;}template<typename T>void write(const T&x){cout<<x;}void write(double x){cout<<fixed<<setprecision(12)<< x;}
 																																																	#else
 																																																	#define br putchar('\n')
 																																																	#define sp putchar(' ')
