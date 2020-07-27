@@ -23,7 +23,23 @@
 using namespace std;
 
 typedef long long ll;
+typedef vector<ll> vll;
+typedef vector<vll> vvll;
+typedef vvll v2ll;
+typedef vector<v2ll> v3ll;
+typedef vector<v3ll> v4ll;
 typedef unsigned long long ull;
+typedef vector<ull> vull;
+typedef vector<vull> vvull;
+typedef vvull v2ull;
+typedef vector<v2ull> v3ull;
+typedef vector<v3ull> v4ull;
+typedef long double ld;
+typedef vector<ld> vld;
+typedef vector<vld> vvld;
+typedef vvld v2ld;
+typedef vector<v2ld> v3ld;
+typedef vector<v3ld> v4ld;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
@@ -229,8 +245,9 @@ typename enable_if<is_integral<T>::value, void>::type write(const T& x)
     if (x > 9) write(x / 10);
     putchar(x % 10 + '0');
 }
-void write(const char& x) { putchar(x); }
-void write(const double& x) { printf("%.12lf", x); }
+void write(char x) { putchar(x); }
+void write(double x) { printf("%.12lf", x); }
+void write(ld x) { cout << fixed << setprecision(12) << x; }
 #endif
 template <typename T>
 typename enable_if<is_pair<T>::value, void>::type read(T& x)
